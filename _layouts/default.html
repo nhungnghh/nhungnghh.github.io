@@ -1,51 +1,101 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
+<html lang="en">
 
-    {% include meta.html %}
+<head>
+  <meta charset="UTF-8">
 
-    <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
-    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+  <title>
+    {% if page.title %}
+      {{ page.title }} | {{ site.name }}
+    {% else %}
+      {{ site.name }}
+    {% endif %}
+  </title>
 
-    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
-  </head>
+  <meta
+    name="description"
+    content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}"
+  >
 
-  <body>
-    <div class="wrapper-masthead">
-      <div class="container">
-        <header class="masthead clearfix">
-          <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
+  <!-- Main stylesheet -->
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ '/style.css' | relative_url }}"
+  >
 
-          <div class="site-info">
-            <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
-            <p class="site-description">{{ site.description }}</p>
-          </div>
+</head>
 
-          <nav>
-            <a href="{{ site.baseurl }}/">Blog</a>
-            <a href="{{ site.baseurl }}/about">About</a>
-          </nav>
-        </header>
+<body>
+
+  <!-- =========================
+       Header
+       ========================= -->
+  <header class="site-header">
+
+    <div class="container header-inner">
+
+      <div class="site-brand">
+
+        <a class="site-title" href="{{ '/' | relative_url }}">
+          {{ site.name | default: "Nghiem Nhung" }}
+        </a>
+
+        <p class="site-description">
+          {{ site.description | default: "Security Analysis • Threat Intelligence • Malware Analysis" }}
+        </p>
+
       </div>
+
+      <nav class="site-nav">
+
+        <a href="{{ '/' | relative_url }}">
+          Blog
+        </a>
+
+        <a href="{{ '/about' | relative_url }}">
+          About
+        </a>
+
+      </nav>
+
     </div>
 
-    <div id="main" role="main" class="container">
-      {{ content }}
+  </header>
+
+
+  <!-- =========================
+       Main Content
+       ========================= -->
+  <main class="container main-content">
+
+    {{ content }}
+
+  </main>
+
+
+  <!-- =========================
+       Footer
+       ========================= -->
+  <footer class="site-footer">
+
+    <div class="container">
+
+      <p>
+        © {{ site.time | date: "%Y" }}
+        {{ site.name | default: "Nghiem Nhung" }}
+      </p>
+
+      <p class="footer-note">
+        Cybersecurity • Threat Intelligence • Reverse Engineering
+      </p>
+
     </div>
 
-    <div class="wrapper-footer">
-      <div class="container">
-        <footer class="footer">
-          {% include svg-icons.html %}
-        </footer>
-      </div>
-    </div>
+  </footer>
 
-    {% include analytics.html %}
-  </body>
+</body>
+
 </html>
