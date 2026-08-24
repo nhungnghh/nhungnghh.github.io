@@ -1,17 +1,76 @@
+```html
 ---
 layout: default
 ---
 
 <article class="post">
-  <h1>{{ page.title }}</h1>
 
+  <!-- Post Header -->
+  <header class="post-header">
+
+    <h1 class="post-title">
+      {{ page.title }}
+    </h1>
+
+    {% if page.description %}
+      <p class="post-description">
+        {{ page.description }}
+      </p>
+    {% endif %}
+
+    <div class="post-meta">
+
+      <span class="post-date">
+        {{ page.date | date: "%B %d, %Y" }}
+      </span>
+
+      {% if page.categories %}
+        <span class="post-separator">·</span>
+
+        <span class="post-categories">
+          {% for category in page.categories %}
+            <span class="post-category">
+              {{ category }}
+            </span>
+          {% endfor %}
+        </span>
+      {% endif %}
+
+      {% if page.reading_time %}
+        <span class="post-separator">·</span>
+
+        <span>
+          {{ page.reading_time }} min read
+        </span>
+      {% endif %}
+
+    </div>
+
+  </header>
+
+
+  <!-- Post Content -->
   <div class="entry">
+
     {{ content }}
+
   </div>
 
-  <div class="date">
-    Written on {{ page.date | date: "%B %e, %Y" }}
-  </div>
+
+  <!-- Post Footer -->
+  <footer class="post-footer">
+
+    <a
+      href="{{ '/' | relative_url }}"
+      class="back-to-blog"
+    >
+      ← Back to Blog
+    </a>
+
+  </footer>
+
 
   {% include disqus.html %}
+
 </article>
+```
