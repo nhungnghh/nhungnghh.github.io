@@ -1,3 +1,8 @@
+---
+layout: post
+title: "PE Parser"
+date: 2026-08-24
+---
 # PE Parser
 ## Part 1: Định nghĩa các structures, constants
 ### Các types
