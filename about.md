@@ -10,4 +10,4 @@ permalink: /about/
 I'll be sharing what I learn along the way !
 ### Contact me
 
-nghiemnhung2003@gmail.com
+Gmail: nghiemnhung2003@gmail.com
