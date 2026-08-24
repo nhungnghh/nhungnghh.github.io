@@ -1,5 +1,7 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
 
@@ -53,14 +55,14 @@
 
     <div class="header-container">
 
-      <!-- Terminal-style branding -->
+      <!-- Personal branding -->
       <div class="terminal-brand">
 
-       <a href="{{ '/' | relative_url }}" class="terminal-title">
-        <span class="terminal-prompt">&gt;</span>
-        <span class="terminal-name">Nghiem Nhung</span>
-        <span class="terminal-cursor">_</span>
-      </a>
+        <a href="{{ '/' | relative_url }}" class="terminal-title">
+          <span class="terminal-prompt">&gt;</span>
+          <span class="terminal-name">Nghiem Nhung</span>
+          <span class="terminal-cursor">_</span>
+        </a>
 
       </div>
 
@@ -70,18 +72,18 @@
 
         <a href="{{ '/' | relative_url }}">
           Blog
-      
+        </a>
+
         <a href="{{ '/about/' | relative_url }}">
           About me
         </a>
-
 
         <!-- Theme Toggle -->
         <button
           id="theme-toggle"
           class="theme-toggle"
           type="button"
-          aria-label="Toggle dark mode"
+          aria-label="Toggle theme"
           title="Switch theme"
         >
           ◐
@@ -132,32 +134,34 @@
        ===================================================== -->
 
   <script>
-
     const themeToggle = document.getElementById("theme-toggle");
 
-    themeToggle.addEventListener("click", function () {
+    if (themeToggle) {
+      themeToggle.addEventListener("click", function () {
 
-      const currentTheme =
-        document.documentElement.getAttribute("data-theme");
+        const currentTheme =
+          document.documentElement.getAttribute("data-theme");
 
-      const newTheme =
-        currentTheme === "dark"
-          ? "light"
-          : "dark";
+        const newTheme =
+          currentTheme === "dark"
+            ? "light"
+            : "dark";
 
-      document.documentElement.setAttribute(
-        "data-theme",
-        newTheme
-      );
+        document.documentElement.setAttribute(
+          "data-theme",
+          newTheme
+        );
 
-      localStorage.setItem(
-        "theme",
-        newTheme
-      );
+        localStorage.setItem(
+          "theme",
+          newTheme
+        );
 
-    });
-
+      });
+    }
   </script>
 
 </body>
+
 </html>
+```
