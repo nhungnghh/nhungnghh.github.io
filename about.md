@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: <u> About </u>
 permalink: /about/
 ---
 
@@ -13,7 +13,9 @@ I'm continunously learning how threats work under the hood.
 #### Contact me
 
 - E-mail: nghiemnhung2003@gmail.com
+
 ---
+
 ### About the blog
 A personal space for documenting what I learn and research in cybersecurity.
 Mostly notes and write-ups about **threat intelligence, malware, reverse-engineering, and DFIR.**
