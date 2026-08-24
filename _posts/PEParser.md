@@ -1,0 +1,47 @@
+# PE Parser
+## Part 1: Định nghĩa các structures, constants
+### Các types
+```python
+typedef unsigned char BYTE;
+typedef unsigned short WORD;
+typedef unsigned long DWORD;
+typedef unsigned long long QWORD;
+typedef unsigned long LONG;
+typedef __int64 LONGLONG;
+typedef unsigned __int64 ULONGLONG;
+```
+### Các Constants
+```python
+#define __IMAGE_NT_OPTIONAL_HDR32_MAGIC        0x10b
+#define __IMAGE_NT_OPTIONAL_HDR64_MAGIC        0x20b
+#define __IMAGE_NUMBEROF_DIRECTORY_ENTRIES     16
+#define __IMAGE_DOS_SIGNATURE                  0x5A4D
+
+#define __IMAGE_DIRECTORY_ENTRY_EXPORT            0
+#define __IMAGE_DIRECTORY_ENTRY_IMPORT            1
+#define __IMAGE_DIRECTORY_ENTRY_RESOURCE          2
+#define __IMAGE_DIRECTORY_ENTRY_EXCEPTION         3
+#define __IMAGE_DIRECTORY_ENTRY_SECURITY          4
+#define __IMAGE_DIRECTORY_ENTRY_BASERELOC         5
+#define __IMAGE_DIRECTORY_ENTRY_DEBUG             6
+#define __IMAGE_DIRECTORY_ENTRY_ARCHITECTURE      7
+#define __IMAGE_DIRECTORY_ENTRY_GLOBALPTR         8
+#define __IMAGE_DIRECTORY_ENTRY_TLS               9
+#define __IMAGE_DIRECTORY_ENTRY_LOAD_CONFIG      10
+#define __IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT     11
+#define __IMAGE_DIRECTORY_ENTRY_IAT              12
+#define __IMAGE_DIRECTORY_ENTRY_DELAY_IMPORT     13
+#define __IMAGE_DIRECTORY_ENTRY_COM_DESCRIPTOR   14
+
+#define __IMAGE_SIZEOF_SHORT_NAME                 8 
+#define __IMAGE_SIZEOF_SECTION_HEADER            40
+```
+#### Giải thích:
+
+
+| Macro | Giá trị | Giải thích |
+| -------- | -------- | -------- |
+|__IMAGE_DOS_SIGNATURE     | 0x5A4D     | Magic của file PE ở DOS header: "MZ"     |
+__IMAGE_NT_OPTIONAL_HDR32_MAGIC | 0x10B| Magic xác định là PE32 (32-bit)
+F
+
