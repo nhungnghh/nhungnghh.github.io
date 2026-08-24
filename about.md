@@ -12,8 +12,7 @@ I'm continuously learning how threats work under the hood.
 
 #### Contact me
 
-- E-mail: [nghiemnhung2003@gmail.com]
-
+- E-mail: [nghiemnhung2003@gmail.com](mailto:nghiemnhung2003@gmail.com)
 ---
 
 ### About the blog
