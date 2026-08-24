@@ -1,18 +1,65 @@
+```html
 ---
 layout: default
 ---
 
-<div class="posts">
-  {% for post in site.posts %}
-    <article class="post">
+<section class="blog-home">
 
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+  <div class="blog-header">
+    <h1>Blog</h1>
 
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
+    <p class="blog-intro">
+      Notes on Threat Intelligence, Malware Analysis, DFIR and Security Research.
+    </p>
+  </div>
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>
-  {% endfor %}
-</div>
+
+  {% if site.posts.size > 0 %}
+
+    <div class="post-list">
+
+      {% for post in site.posts %}
+
+        <article class="post-card">
+
+          <div class="post-meta">
+            {{ post.date | date: "%B %d, %Y" }}
+          </div>
+
+          <h2 class="post-card-title">
+            <a href="{{ post.url | relative_url }}">
+              {{ post.title }}
+            </a>
+          </h2>
+
+          <p class="post-excerpt">
+            {% if post.description %}
+              {{ post.description }}
+            {% elsif post.excerpt %}
+              {{ post.excerpt | strip_html | truncatewords: 35 }}
+            {% endif %}
+          </p>
+
+          <a
+            href="{{ post.url | relative_url }}"
+            class="read-more"
+          >
+            Read more →
+          </a>
+
+        </article>
+
+      {% endfor %}
+
+    </div>
+
+  {% else %}
+
+    <p class="no-posts">
+      No posts yet.
+    </p>
+
+  {% endif %}
+
+</section>
+```
