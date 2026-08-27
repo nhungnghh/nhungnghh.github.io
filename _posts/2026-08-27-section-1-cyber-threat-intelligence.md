@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Section 1 GCTI - Cyber Threat Intelligence"
+date: 2026-08-27
+description: "section 1 - cyber threat intelligence and requirements GCTI ."
+---
 
 > [!info] Learning Objectives
 > - Hiểu Intelligence là gì.
