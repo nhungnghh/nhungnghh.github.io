@@ -6,9 +6,11 @@ description: "Chuỗi thực thi nhiều stage của gói npm độc hại infos
 ---
 # Tổng quan
 > Chiến dịch là 1 multi-stage malware chain nhắm vào hệ sinh thái npm/Node.js, trong đó attacker cố tình chia payload thành nhiều lớp:
+
 ```python
 obfuscation -> encrypted payload -> runtime decryption -> core logic -> modular payloads -> GitHub-based retrieval -> alternate payload path
 ```
+
 <img width="1226" height="1283" alt="image" src="https://github.com/user-attachments/assets/18830432-667b-4229-a340-7795a59e557e" />
 
 ## Bắt đầu từ package npm bị cài vào hệ thống
