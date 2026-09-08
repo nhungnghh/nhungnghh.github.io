@@ -5,7 +5,7 @@ date: 2026-09-08
 description: "Chuỗi thực thi nhiều stage của gói npm độc hại infostealer/Shai-Hulud."
 ---
 # Tổng quan
-> Chiến dịch là 1 multi-stage malware chain nhắm vào hệ sinh thái npm/Node.js, trong đó attacker cố tình chia payload thành nhiều lớp:
+Chiến dịch là 1 multi-stage malware chain nhắm vào hệ sinh thái npm/Node.js, trong đó attacker cố tình chia payload thành nhiều lớp:
 
 ```python
 obfuscation -> encrypted payload -> runtime decryption -> core logic -> modular payloads -> GitHub-based retrieval -> alternate payload path
