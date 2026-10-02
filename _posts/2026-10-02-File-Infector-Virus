@@ -1,1 +1,53 @@
+---
+layout: post
+title: "File infector virus"
+date: 2026-10-02
+description: "Viết 1 virus lây file"
+---
+# TỔNG QUAN VỀ MÃ ĐỘC LÂY FILE
+## 1. Mã độc lây file (file infector virus) là gì?
+- Mã độc lây file là 1 loại virus máy tính lây nhiễm vào các file thực thi trên môi trường Windows như .exe, .com, .dll,...hoặc ở trong môi trường Unix là các file như .bin, .out. Khi file bị lây nhiễm thực thi, virus cũng được kích hoạt và từ đó có thể lây lan tiếp sang những file chưa bị nhiễm.
 
+## 2. Các hành vi độc hại
+- Tìm kiếm nạn nhân: Mã độc sẽ chạy 1 module tìm kiếm các file trên hệ thống chưa bị nhiễm để đưa sang module lây nhiễm
+- Lây nhiễm: Sau khi đã có file, mã độc sẽ tiến hành inject các đoạn mã độc hại của nó vào file đích
+- Tự lây lan/mở rộng: Sau khi đã chèn đoạn mã độc hại của nó vào, từ 1 file chưa bị nhiễm đã thành 1 file độc hại khác. Ngoài ra mã độc cũng sẽ lây lan qua các ổ USB, hoặc qua mạng LAN. 
+- Thực hiện hành vi độc hại khác: Phụ thuộc vào kĩ thuật của kẻ tấn công mà sẽ có nhiều vector tấn công khác nhau như thu thập dữ liệu người dùng, mã hóa file, keylogger,...
+
+# Tổng quan về Persistence trong mã độc
+- **Persistence** là hành vi duy trì kiểm soát hệ thống thông tin sau khi đã xâm nhập thành công, cho phép attacker hoạt động trên phần mềm bị xâm nhập trong một thời gian dài ngay cả khi hệ thống khởi động lại, bị đăng xuất hay là khi cuộc tấn công ban đầu đã bị fix.
+- Mục tiêu của Persistence là giúp attacker duy trì cuộc tấn công lâu nhất có thể, tiếp tục các hành vi đánh cắp thông tin, gián điệp hoặc tấn công mà không bị phát hiện.
+- Ví dụ: Tấn công vào 1 máy chủ đang chạy dịch vụ web có khả năng bị RCE, thì sau khi tiến hành xâm nhập có nhiều khả năng sẽ tạo 1 backdoor nhằm duy trì cuộc tấn công ngay kể sau khi admin đã fix lỗi. Điều này cũng thường thấy, attacker viết WEBSHELL rồi chèn vào các file 404.php, 405.aspx, error.jsp,...nhằm đánh lừa người dùng rằng đây là file sạch
+## Một số kĩ thuật persistence
+### Creat account
+- Attacker có thể tạo 1 tài khoản giả gần giống với tài khoản thật, đồng thời cấp các quyền cho phép truy cập từ xa như tạo khóa ssh, thêm vào localgourp "Remote Desktop User",...tùy thuộc vào quyền hạn mà kẻ tấn công có. 
+### Registry Run Key và Startup Program
+#### Startup program
+- Attacker sẽ thêm file độc hại đã được cài đặt sẵn vào Startup để tự khởi chạy khi chúng ta đăng nhập thông qua đường dẫn ``` C:\Users\<Username>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup ```
+#### Registry Run Key
+- Run và RunOnce Keys: Mã độc có thể tạo mục trong registry để tự khởi dộng cùng với hệ điều hành. 
+``` 
+Các key thường gặp:
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunOnce
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunServicesOnce
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunServicesOnce
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunServices
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunServices 
+```
+- Class Extension: Mã độc có thể thay đổi thông tin để mặc định sẽ được chạy khi người dùng ở tệp
+- Services: Mã độc có thể tạo các service giả mạo hoặc thay đổi thông tin registry của các service hiện tại
+#### Schedule Task/job
+- Trên Windows thì có Task Scheduler còn trên Linux có Cronjob để thực thi file vào 1 điểm đã được thiết lập, mã độc có thể tự thiết lập bản thân vào đây để có thể chạy theo lịch, đặc biệt trên các máy chủ thì thường sẽ không tắt nên hành vi sẽ luôn được duy trì cố định
+#### Software Extension
+- Chúng ta thường để ý đến mã độc dạng **.exe** hay là những con **webshell** thông thường, tuy nhiên mã độc còn có thể là các đoạn script độc hại đánh cắp cookie, thông tin đăng nhập,...được đính kèm trên các extension trôi nổi. Có thể là các extensions cho ide (VSCode,...), browser (Chorme, Opera,...)
+#### Process/DLL Injection
+- Mã độc sẽ tiêm chúng vào các process hợp pháp:
+  - explore.exe, svchost.exe, lsass.exe,...: Đây là các tiến trình hệ thống có quyền hạn rất cao, luôn chạy nền và ít bị nghi ngờ
+  - chrome.exe, msedge.exe, discord.exe, steam.exe: Dễ dàng qua firewall và gửi requests đến C2 vì traffic trông hoàn toàn hợp pháp
+  - notepad.exe, calc.exe, winword: Các tiến trình phổ biến dễ dàng qua mặt AV,...
+Ngoài ra còn có 1 số kĩ thuật khác như Wmi, Pre OS Boot,...
+
+**CVE-2025-8088** CỦA **Winrar** cũng sử dụng **Path Traversal** để ghi vào _Startup_ cho phép đạt quyền RCE.
