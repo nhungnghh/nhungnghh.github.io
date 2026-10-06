@@ -2,7 +2,7 @@
 layout: post
 title: "Part 1: Static Analysis"
 date: 2026-10-06
-description: "Part 1: Static Analysi"
+description: "Part 1: Static Analysis"
 ---
 # Static Analysis
 - Static Analysis is one of the fundamental steps in malware analysis and is a technique used to examine malware.
