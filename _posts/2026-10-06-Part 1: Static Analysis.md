@@ -8,6 +8,7 @@ description: "Part 1: Static Analysis"
 - Static Analysis is one of the fundamental steps in malware analysis and is a technique used to examine malware.
 - It involves analyzing: malware's file structure, content and actions.
 - It is usually the first step in the malware analysis process.
+
 # Compiling
 - "Compiling" is the process of translating software source code into machine language that a computer can understand.
 - a "compiler": trình biên dịch, convert high-level language into a lower-level or directly into machine code.
@@ -21,18 +22,21 @@ description: "Part 1: Static Analysis"
       - Security
       - Independence
 **In summary**, compiler is informed about wich CPU, architecture, and operating system the copiled code should run on, and allow the same source code to be compiled for different targets on the same machine.
+
 # Debugging
 - Debugging is the process used in software development to identify and fix errors or "bugs".
 - Programmers execute code step by step and monitor the app's state to detect and resolve issues within the software
     -**Monitor Code Flow**: follow step by step. This enables to see under what conditions the app fail or exhibits unexpected behavior.
     -**Variables and Memory Management**: quản lý biến và bộ nhớ
     -**Breakpoints and Watchpoints**: Điểm dừng và theo dõi at specific lines of code, to be more clearely identified
+
 # Packing
 - Executable packing is a method of compressing and encrypting the exe file of software to reduce its size, improve loading times, or enhance security and protection.
 - Functions of Executable Packing:
     - Reducing File Size
     - Improving Load Time: can speed up app load times by reducing the time it takes to read from disk
     - Security and Protection: making the process of re more difficult
+
 ## Packing Methods
 - Shellter
 - UPX: open-source nature and flexibility
