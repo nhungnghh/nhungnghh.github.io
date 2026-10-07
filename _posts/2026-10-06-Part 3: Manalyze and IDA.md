@@ -2,7 +2,7 @@
 layout: post
 title: "Part 3: Manalyze and IDA"
 date: 2026-10-06
-description: "Part 3: Manalyze and IDA"
+description: "Part 3-4: Manalyze and IDA - DLL and Functions for Windows"
 ---
 
 # Manalyze
