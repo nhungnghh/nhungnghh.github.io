@@ -14,7 +14,11 @@ description: "Part 3-4: Manalyze and IDA - DLL and Functions for Windows"
 # Import DLLs and Function for Windows
 - This lesson will discuss the commonly used DLLs and their functions.
 - The most frequently used DLL and functions inherent to the Windows OS:
-  - ADVAPI32.dll
-  - KERNEL32.dll
-  - USER32.dll
-  - WININET.dll và WS2_32.dll
+  - **ADVAPI32.dll**
+  - **KERNEL32.dll**
+  - **USER32.dll**
+  - **WININET.dll và WS2_32.dll**
+
+## ADVAPI32.dll
+- **"RegCreateKeyEx", "RegOpenKeyEx", "RegSetValueEx", and "RegDeleteKey"**: Functions that manipulate registry keys. Malware often uses registry keys to ensure persistence or change system settings.
+- 
