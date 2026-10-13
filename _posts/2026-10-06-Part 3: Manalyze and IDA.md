@@ -34,3 +34,23 @@ description: "Part 3-4: Manalyze and IDA - DLL and Functions for Windows"
 - **"socket", "connect", "send", "recv"**: Functions for low-level network operations. These can be used to create network traffic or steal data.
 
 # Tệp ELF
+- The Executable and Linkable (ELF) is a file format that is widely used in Unix and Unix-like OS, include Linux, Solaris, FreeBSD and others. The ELF file format provides a standard format for a variety of file types, including executables, object files, shared libraries, and kernel modules.
+- It has superseded (đã được thay thế) bởi format cũ 'a.out' và 'COFF' và now ELF định dạng mặc định cho hệ thống Unix system.
+
+## ELF Structure
+- **Header**: defines the type of file (executable, shared library, or object file), the processor architecture (bộ xử lý), and other general properties of the file.
+- **Program Header Table**: describe the properties and locations of exec or loadable file segments. The OS uses this table to load the file into memory.
+- **Section Header Table**: defines the properties and locations of the sections within the file. Each section contain specific data
+  - **.text**: contains the exec code in machine language
+  - **.data**: contains initialized global and static variables
+  - **.bss**: used for uninitialized global and static variables
+  - **.rodata**: contains read-only data
+  - **.symtab**: a symbol table containing info aobut named program program elements created by the compiler and linker
+  - **.strtab**: contains string data, such as symbol names
+  - **Dynamic Section**: contains dynamic linking info and describe how the program interacts with other libraries at runtime
+ 
+# Readelf
+To analyze ELF files, the "readelf" command, which is typically pre-installed on almost all Linux distributions, can be used:
+``` readelf -a /usr/bin/ssh ```
+# Strings
+The 'strings' command is a tool used on Unix and Unix-like OS, allowing users to view printable character sequences from a specified file.
