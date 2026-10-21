@@ -45,9 +45,60 @@ Malware often employs various techniques to avoid detection during dynamic analy
 - Process Explorer displays detailed information about each process, such as memory usage, CPU load, full path of the executed file, open file handles and installed DLLs. It displays processes and their sub-processes in a hierarchical structure, allowing you to understand how a process relates to other processes and which processes are initiated by which processes.
 
 # Sandboxes
+- Sandbox is an important tool used in malware analysis.
+- It is a tech that allows suspicious or ptentially malicious software to be run and analyzed in a safe and secure environment. Nó có khả năng quan sát cách software behaves mà không gây ảnh hưởng tới real system.
+## Sanboxes are designed to provide solutions
+- **Isolation**: ensures that malicious software operates in env that is isolated from host OS, this prevents the malware from damaging the rest of the system.
+- **Behavioral Analysis**: monitor the behavior of malicious software, such as network connections, file accesses, registry changes and other system interactions. This info is used to determine whether the software is malicious.
+- **Automation**: automate the analysis process, allowing large numbers of malware samples to be analyzed quickly
+- **Reporting**: provide detailed reports on the results of the analysis. Include how the malware behaves, the system calls it makes, and the potential damage it can cause.
+## Some of these sandbox solutions
+- **Cuckoo**: open source sandbox solution known for its versatility and extensibility. It can analyze files, URLs, and even memory dumps.
+- **AnyRun**: popular online sandbox solution with a free version available
+- **Joe Sandbox**: a commercial product that automatically performs in-depth malware analysis. It supports a wide range of file formats and provides detailed analysis reports.
+- **Hybrid analysis**: an online sandbox with both free and paid versions that allows users to analyze malware.
+## In this lession, we will analyze how sandboxes work using AnyRun
+https://any.run/
 
 # Code Analysis
+There are two main ways to perform source code analysis:
+- static analysis
+- dynamic analysis
+## Static Code Analysis
+- analyzes the source code without running the software. Tools and techniques are used to scan the software code to find bugs, vul, and other quality issues before the code is executed.
+### Syntax Check
+- The purpose of this check is to verify that the code conforms(phù hợp) to the syntatic rules of the language.
+- It is usually performed by compilers or interpreters. Wrong or missing syntax is the cause of compilation errors.
+### Semantic Analysis
+- The purpose of this analysis is to check semantic rules, such as the definition of variables, type incompatibilities,...
+- Analysis practices check whether variable usage, function calls, and other code fragments are used appropriately.
+### Control Flow Analysis
+- The goal is to analyze the flow and logic of the code to detect dead code (code that never executed) or infinite loops.
+- Potential bugs are detected by identifying the various execution paths and states of the code.
+### Data Flow Analysis
+- verify variables are used appropriately after they are defined
+- checks the values assigned to variables are used appropriately, and that they are initialized before being used.
+### Metric-based Analysis
+- aims to measure the complexity and readability of code
+### Modeling
+- aims to representing the code with high-level models and detecting potential bugs through these models
+### Rule-based Analysis
+- It is the process of reviewing the code based on predefined sets of rules.
+- It is typically used to detect vul such as SQL inject, XSS.
+## Static Code Analysis Tools
+- SonarQube", "Checkstyle", "FindBugs", "Coverity", "Fortify" are popular commercial static code analysis tools.
+<img width="878" height="898" alt="image" src="https://github.com/user-attachments/assets/3f42aca0-f9c1-4815-ae31-f0f302e68c5d" />
 
+## Dynamic Code Analysis
+- analysis refers to analysis performed at the runtime of a software application to detect potential problems by monitoring the behavior of the app as it runs. This type of analysis is often used for application testing, debugging, and performance measurement.
+Some of the basic techniques used and some of the details involved in analyzing dynamic code:
+- **Test Automation**: verify that the software works properly in different scenarios.
+- **Debugging**: detects runtime errors and finds the source of problems. This enables them to identify the causes of unexpected or undersirable(khong mong muon) behavior.
+- **Profiling**: techniques of analyzing app performance and identifying bottlenecks (xac dinh cac diem nghen)
+- **Security Testing**: tests designed to identify vul in the application
+- **Load Tessting**: howw the app performs under heavy traffic or data
+- **Dynamic Taint Analysis**: Taint analysis is the monitoring of how unsafe inputs are processed within the application. It analyzes how unsafe (tainted) data flows through and is processed by the application. This method is important for detecting security vul.
 
-
+## Dynamic Code Analysis Tools
+<img width="994" height="623" alt="image" src="https://github.com/user-attachments/assets/24a5eefb-4196-42aa-a05e-823e5b832b8a" />
 
